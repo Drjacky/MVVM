@@ -1,0 +1,80 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    defaultConfig {
+        multiDexEnabled true
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+}
+
+dependencies {
+    def dataDependencies = rootProject.ext.dataDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // android support libs
+    implementation dataDependencies.appCompat
+    // dependency injection
+    implementation dataDependencies.javaxInject
+    /*implementation dataDependencies.dagger
+    implementation dataDependencies.daggerAndroid
+    implementation dataDependencies.daggerAndroidSupport
+    kapt dataDependencies.daggerAndroidProcessor
+    annotationProcessor dataDependencies.daggerCompiler
+    kapt dataDependencies.daggerCompiler*/
+    // reactive
+    implementation dataDependencies.rxJava
+    // network
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofitGsonConverter
+    implementation dataDependencies.retrofitRxJava2Adapter
+    implementation dataDependencies.okhttpLogging
+    // database
+    implementation dataDependencies.room
+    kapt dataDependencies.roomCompiler
+    implementation dataDependencies.roomCommon
+    implementation dataDependencies.roomRxJava
+    implementation dataDependencies.pagingRuntime
+    implementation dataDependencies.pagingRxJava
+    // other
+    implementation dataDependencies.kotlin
+    // android architecture component
+    implementation dataDependencies.lifecycleExtensions
+    implementation dataDependencies.lifecycleCommon
+    implementation dataDependencies.reactiveStreams
+    // test
+    testImplementation dataTestDependencies.junit
+    testImplementation dataTestDependencies.mockito
+    androidTestImplementation dataTestDependencies.testRunner
+    testImplementation dataTestDependencies.room
+
+    implementation project(':domain')
+}
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+}

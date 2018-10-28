@@ -1,0 +1,140 @@
+ext {
+    // Android
+    minSdkVersion = 14
+    targetSdkVersion = 28
+    versionCode = 1
+    versionName = "1.0"
+    androidCompileSdkVersion = 28
+    testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    // Libraries
+    ankoVersion = '0.10.4'
+    retrofit2Version = '2.4.0'
+    butterknifeVersion = '8.8.1'
+    picassoVersion = '2.71828'
+    supportVersion = '1.0.0-rc02'//'1.0.0-alpha1'
+    daggerVersion = '2.16'
+    espressoVersion = '3.1.0-alpha1'
+    powermockVersion = '1.7.4'
+    lifecycleVersion = '2.0.0'
+    rxJavaVersion = '2.2.2'
+    rxAndroidVersion = '2.1.0'
+    reactiveStreamsVersion = '1.1.0'
+    roomVersion = '2.1.0-alpha01'//'2.0.0-beta01'
+    pagingVersion = '2.0.0'
+    javaxInjectVersion = '1'
+    okhttpLoggingVersion = '3.11.0'
+    junitVersion = '4.12'
+    mockitoVersion = '2.8.47'
+    realmFieldNamesHelperVersion = '1.1.1'
+    gsonVersion = '2.8.5'
+    constraintLayoutVersion = '1.1.2'
+    multidexVersion = '2.0.0'
+    supportTest = '1.1.0-alpha1'
+    mockitoKotlinVersion = '2.0.0-RC1'
+    robolectricVersion = '3.8'
+    mockitoCoreVersion = '2.21.0'
+    navigationVersion = '1.0.0-alpha06'
+    paginateVersion = '0.5.1'
+    // Domain
+    domainDependencies = [
+            kotlin       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            rxJava       : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            rxAndroid    : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            pagingRuntime: "androidx.paging:paging-runtime:$pagingVersion",
+            pagingRxJava : "androidx.paging:paging-rxjava2:$pagingVersion"
+    ]
+    domainTestDependencies = [
+            kotlin    : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            junit     : "junit:junit:$junitVersion",
+            mockito   : "org.mockito:mockito-core:$mockitoVersion",
+            testRunner: "androidx.test:runner:$supportTest",
+            testRules : "androidx.test:runner:$supportTest"
+    ]
+    // Data
+    dataDependencies = [
+            kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            rxJava                : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            rxAndroid             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            reactiveStreams       : "android.arch.lifecycle:reactivestreams:$reactiveStreamsVersion",
+            appCompat             : "androidx.appcompat:appcompat:$supportVersion",
+            javaxInject           : "javax.inject:javax.inject:$javaxInjectVersion",
+            retrofit              : "com.squareup.retrofit2:retrofit:$retrofit2Version",
+            retrofitRxJava2Adapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version",
+            retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofit2Version",
+            okhttpLogging         : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion",
+            room                  : "androidx.room:room-runtime:$roomVersion",
+            roomCompiler          : "androidx.room:room-compiler:$roomVersion",
+            roomCommon            : "androidx.room:room-common:$roomVersion",
+            roomRxJava            : "androidx.room:room-rxjava2:$roomVersion",
+            gson                  : "com.google.code.gson:gson:$gsonVersion",
+            lifecycleExtensions   : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
+            lifecycleCommon       : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
+            pagingRuntime         : "androidx.paging:paging-runtime:$pagingVersion",
+            pagingRxJava          : "androidx.paging:paging-rxjava2:$pagingVersion"
+    ]
+    dataTestDependencies = [
+            kotlin    : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            junit     : "junit:junit:$junitVersion",
+            mockito   : "org.mockito:mockito-core:$mockitoVersion",
+            testRunner: "androidx.test:runner:$supportTest",
+            testRules : "androidx.test:runner:$supportTest",
+            room      : "androidx.room:room-testing:$roomVersion"
+    ]
+    // Presentation
+    presentationDependencies = [
+            kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            rxJava                : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            rxAndroid             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            reactiveStreams       : "android.arch.lifecycle:reactivestreams:$reactiveStreamsVersion",
+            appCompat             : "androidx.appcompat:appcompat:$supportVersion",
+            material              : "com.google.android.material:material:$supportVersion",
+            supportv4             : "androidx.legacy:legacy-support-v4:$supportVersion",
+            recyclerview          : "androidx.recyclerview:recyclerview:$supportVersion",
+            cardview              : "androidx.cardview:cardview:$supportVersion",
+            annotation            : "androidx.annotation:annotation:$supportVersion",
+            javaxInject           : "javax.inject:javax.inject:$javaxInjectVersion",
+            dagger                : "com.google.dagger:dagger:$daggerVersion",
+            daggerAndroid         : "com.google.dagger:dagger-android:$daggerVersion",
+            daggerAndroidSupport  : "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:$daggerVersion",
+            daggerCompiler        : "com.google.dagger:dagger-compiler:$daggerVersion",
+            retrofit              : "com.squareup.retrofit2:retrofit:$retrofit2Version",
+            retrofitRxJava2Adapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version",
+            retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofit2Version",
+            okhttpLogging         : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion",
+            room                  : "androidx.room:room-runtime:$roomVersion",
+            roomCompiler          : "androidx.room:room-compiler:$roomVersion",
+            roomCommon            : "androidx.room:room-common:$roomVersion",
+            realmFieldNamesHelper : "dk.ilios:realmfieldnameshelper:$realmFieldNamesHelperVersion",
+            gson                  : "com.google.code.gson:gson:$gsonVersion",
+            constraintLayout      : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            picasso               : "com.squareup.picasso:picasso:$picassoVersion",
+            multidex              : "androidx.multidex:multidex:$multidexVersion",
+            anko                  : "org.jetbrains.anko:anko:$ankoVersion",
+            lifecycleExtensions   : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
+            lifecycleCommon       : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
+            pagingRuntime         : "androidx.paging:paging-runtime:$pagingVersion",
+            navigationFragment    : "android.arch.navigation:navigation-fragment-ktx:$navigationVersion",
+            navigationUi          : "android.arch.navigation:navigation-ui-ktx:$navigationVersion",
+            paginate              : "com.github.markomilos:paginate:$paginateVersion"
+    ]
+    presentationTestDependencies = [
+            kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            junit                 : "junit:junit:$junitVersion",
+            mockito               : "org.mockito:mockito-core:$mockitoVersion",
+            room                  : "androidx.room:room-testing:$roomVersion",
+            testRunner            : "androidx.test:runner:$supportTest",
+            testRules             : "androidx.test:runner:$supportTest",
+            espressoCore          : "androidx.test.espresso:espresso-core:$espressoVersion",
+            espressoContrib       : ("androidx.test.espresso:espresso-contrib:$espressoVersion"),
+            espressoIdlingResource: "androidx.test.espresso:espresso-idling-resource:$espressoVersion",
+            supportAnnotations    : "androidx.annotation:annotation:$supportVersion",
+            robolectric           : "org.robolectric:robolectric:$robolectricVersion",
+            mockitoCore           : "org.mockito:mockito-core:$mockitoCoreVersion",
+            daggerCompiler        : "com.google.dagger:dagger-compiler:$daggerVersion",
+            mockitoKotlin         : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion",
+            powermockModuleJunit4 : "org.powermock:powermock-module-junit4:$powermockVersion",
+            powermockApiMockito   : "org.powermock:powermock-api-mockito:$powermockVersion"
+    ]
+
+}

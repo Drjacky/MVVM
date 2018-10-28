@@ -1,0 +1,126 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    dataBinding {
+        enabled = true
+    }
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    defaultConfig {
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        applicationId "ir.hosseinabbasi.mvvm"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-DEBUG"
+            signingConfig android.signingConfigs.debug
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+}
+
+dependencies {
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // android support libs
+    implementation presentationDependencies.material
+    implementation presentationDependencies.supportv4
+    implementation presentationDependencies.appCompat
+    implementation presentationDependencies.recyclerview
+    implementation presentationDependencies.cardview
+    implementation presentationDependencies.annotation
+    // database
+    //kapt presentationDependencies.realmFieldNamesHelper
+    implementation presentationDependencies.room
+    kapt presentationDependencies.roomCompiler
+    implementation presentationDependencies.roomCommon
+    // network
+    implementation presentationDependencies.retrofit
+    implementation presentationDependencies.retrofitGsonConverter
+    implementation presentationDependencies.retrofitRxJava2Adapter
+    implementation presentationDependencies.okhttpLogging
+    // parser
+    implementation presentationDependencies.gson
+    // dependency injection
+    implementation presentationDependencies.javaxInject
+    implementation presentationDependencies.dagger
+    implementation presentationDependencies.daggerAndroid
+    implementation presentationDependencies.daggerAndroidSupport
+    kapt presentationDependencies.daggerAndroidProcessor
+    annotationProcessor presentationDependencies.daggerCompiler
+    kapt presentationDependencies.daggerCompiler
+    // reactive
+    implementation presentationDependencies.rxJava
+    implementation presentationDependencies.rxAndroid
+    implementation presentationDependencies.reactiveStreams
+    // ui
+    implementation presentationDependencies.constraintLayout
+    implementation presentationDependencies.picasso
+    implementation presentationDependencies.navigationFragment
+    implementation presentationDependencies.navigationUi
+    implementation presentationDependencies.paginate
+    //kapt "com.android.databinding:compiler:3.1.4"
+    //other
+    implementation presentationDependencies.multidex
+    implementation presentationDependencies.kotlin
+    implementation presentationDependencies.anko
+    // android architecture component
+    implementation presentationDependencies.lifecycleExtensions
+    implementation presentationDependencies.lifecycleCommon
+    implementation presentationDependencies.pagingRuntime
+    // test
+    testImplementation presentationTestDependencies.junit
+    androidTestImplementation presentationTestDependencies.testRunner
+    androidTestImplementation presentationTestDependencies.testRules
+    androidTestImplementation presentationTestDependencies.espressoCore
+    androidTestImplementation presentationTestDependencies.espressoContrib
+    implementation presentationTestDependencies.espressoIdlingResource
+    androidTestImplementation presentationTestDependencies.supportAnnotations
+    testImplementation presentationTestDependencies.robolectric
+    testImplementation presentationTestDependencies.mockitoCore
+    testAnnotationProcessor presentationTestDependencies.daggerCompiler
+    androidTestAnnotationProcessor presentationTestDependencies.daggerCompiler
+    testImplementation presentationTestDependencies.mockitoKotlin
+    testImplementation presentationTestDependencies.powermockModuleJunit4
+    testImplementation presentationTestDependencies.powermockApiMockito
+
+    implementation project(':data')
+    implementation project(':domain')
+}
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+}
+androidExtensions {
+    experimental = true
+}

@@ -1,0 +1,26 @@
+apply plugin: 'kotlin'
+
+targetCompatibility = 1.8
+sourceCompatibility = 1.8
+
+dependencies {
+    def domainDependencies = rootProject.ext.domainDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
+
+    // other
+    implementation domainDependencies.kotlin
+    // reactive
+    implementation domainDependencies.rxAndroid
+    implementation domainDependencies.rxJava
+    // database
+    implementation domainDependencies.pagingRuntime
+    implementation domainDependencies.pagingRxJava
+    // test
+    testImplementation domainTestDependencies.junit
+    testImplementation domainTestDependencies.mockito
+}
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+}
