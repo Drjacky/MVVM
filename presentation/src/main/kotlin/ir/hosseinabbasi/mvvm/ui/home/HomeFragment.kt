@@ -32,7 +32,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener, Pagin
     private var isLoading = false
     private var hasLoadedAllItems = false
 
-    private val mAdapter: AlbumListAdapter by lazy {
+    private val adapter: AlbumListAdapter by lazy {
         AlbumListAdapter()
     }
 
@@ -53,7 +53,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener, Pagin
     }
 
     private fun showAlbums(albums: PagedList<Entity.Album>) {
-        mAdapter.submitList(albums)
+        adapter.submitList(albums)
 //        when (albums) {
 //            is ResultState.Success -> {
 //                //hideLoading()
@@ -80,9 +80,9 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener, Pagin
         fragmentHomeSwp.setOnRefreshListener(this)
         fragmentHomeRcyMain.layoutManager = LinearLayoutManager(activity)
         fragmentHomeRcyMain.setHasFixedSize(true)
-        fragmentHomeRcyMain.adapter = mAdapter
+        fragmentHomeRcyMain.adapter = adapter
 
-        mAdapter.albumItemClickEvent.applyIoScheduler().subscribe { it ->
+        adapter.albumItemClickEvent.applyIoScheduler().subscribe { it ->
             viewModel.deleteAlbum(it)
         }
 
@@ -99,15 +99,16 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener, Pagin
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        observe(viewModel.albumsLiveData, ::showAlbums)
+        observe(viewModel.albumsLiveData(), ::showAlbums)
         observe(viewModel.deletedAlbumLiveData, ::onAlbumDeleted)
         observe(viewModel.networkList) {
             fragmentHomeSwp.isRefreshing = false
             isLoading = false
             when (it) {
                 is ResultState.Success -> {
-                    if (it.data.size < 10) {
+                    if (it.data.size < 10 || it.data.lastOrNull()?.id == 100L) {
                         hasLoadedAllItems = true
+                        paginate.setHasMoreDataToLoad(false)
                     }
                 }
                 is ResultState.Error -> {
@@ -118,8 +119,8 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener, Pagin
     }
 
     override fun onRefresh() {
-        viewModel.page = 0
-        onLoadMore()
+        viewModel.refresh()
+        observe(viewModel.albumsLiveData(true), ::showAlbums)
     }
 
     override fun onLoadMore() {

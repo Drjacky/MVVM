@@ -16,7 +16,7 @@ import javax.inject.Inject
  */
 class HomeViewModel @Inject constructor(private val getAlbumsUseCase: GetAlbumsUseCase) : BaseViewModel() {
 
-    var page = 0
+    private var page = 0
     private val albumToBeDeleted = MutableLiveData<Entity.Album>()
     private val pageLiveData = MutableLiveData<Int>()
 //    val pageNumberLiveData = MutableLiveData<Int>().defaultValue(1)
@@ -44,15 +44,26 @@ class HomeViewModel @Inject constructor(private val getAlbumsUseCase: GetAlbumsU
 //        }
 //    }
 
-    val albumsLiveData: LiveData<PagedList<Entity.Album>> = OperationLiveData<PagedList<Entity.Album>> {
-        getAlbumsUseCase.getAlbums().subscribe {
-            postValue(it)
+    fun albumsLiveData(refresh: Boolean = false): LiveData<PagedList<Entity.Album>> {
+        if (refresh) {
+            albumsLiveData = operationLiveData()
+        }
+        return albumsLiveData
+    }
+
+    private var albumsLiveData: LiveData<PagedList<Entity.Album>> = operationLiveData()
+
+    private fun operationLiveData(): OperationLiveData<PagedList<Entity.Album>> {
+        return OperationLiveData<PagedList<Entity.Album>> {
+            getAlbumsUseCase.getAlbums().subscribe {
+                postValue(it)
+            }
         }
     }
 
     fun getAlbums() {
-        page += 10
         pageLiveData.postValue(page)
+        page += 10
     }
 
     val networkList: LiveData<ResultState<List<Entity.Album>>> = Transformations.switchMap(pageLiveData) {
@@ -61,5 +72,9 @@ class HomeViewModel @Inject constructor(private val getAlbumsUseCase: GetAlbumsU
                 postValue(resultState)
             }
         }
+    }
+
+    fun refresh() {
+        page = 0
     }
 }
