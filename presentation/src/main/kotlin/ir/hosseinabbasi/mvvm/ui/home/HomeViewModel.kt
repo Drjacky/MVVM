@@ -16,7 +16,7 @@ import javax.inject.Inject
  */
 class HomeViewModel @Inject constructor(private val getAlbumsUseCase: GetAlbumsUseCase) : BaseViewModel() {
 
-    private var page = 0
+    var page = 0
     private val albumToBeDeleted = MutableLiveData<Entity.Album>()
     private val pageLiveData = MutableLiveData<Int>()
 //    val pageNumberLiveData = MutableLiveData<Int>().defaultValue(1)

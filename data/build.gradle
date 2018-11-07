@@ -57,14 +57,14 @@ dependencies {
     kapt dataDependencies.roomCompiler
     implementation dataDependencies.roomCommon
     implementation dataDependencies.roomRxJava
-    implementation dataDependencies.pagingRuntime
-    implementation dataDependencies.pagingRxJava
     // other
     implementation dataDependencies.kotlin
     // android architecture component
     implementation dataDependencies.lifecycleExtensions
     implementation dataDependencies.lifecycleCommon
     implementation dataDependencies.reactiveStreams
+    implementation dataDependencies.pagingRuntime
+    implementation dataDependencies.pagingRxJava
     // test
     testImplementation dataTestDependencies.junit
     testImplementation dataTestDependencies.mockito

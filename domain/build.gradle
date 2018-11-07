@@ -12,7 +12,7 @@ dependencies {
     // reactive
     implementation domainDependencies.rxAndroid
     implementation domainDependencies.rxJava
-    // database
+    // android architecture component
     implementation domainDependencies.pagingRuntime
     implementation domainDependencies.pagingRxJava
     // test

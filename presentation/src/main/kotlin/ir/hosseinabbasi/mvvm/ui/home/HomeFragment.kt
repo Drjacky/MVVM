@@ -53,6 +53,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener, Pagin
     }
 
     private fun showAlbums(albums: PagedList<Entity.Album>) {
+        if (viewModel.page == 0) fragmentHomeRcyMain.scrollToPosition(0)
         adapter.submitList(albums)
 //        when (albums) {
 //            is ResultState.Success -> {
