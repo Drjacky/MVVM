@@ -47,6 +47,7 @@ dependencies {
     kapt dataDependencies.daggerCompiler*/
     // reactive
     implementation dataDependencies.rxJava
+    implementation dataDependencies.rxAndroid
     // network
     implementation dataDependencies.retrofit
     implementation dataDependencies.retrofitGsonConverter

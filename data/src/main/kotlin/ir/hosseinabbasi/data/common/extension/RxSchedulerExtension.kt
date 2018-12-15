@@ -1,4 +1,4 @@
-package ir.hosseinabbasi.mvvm.common.extension
+package ir.hosseinabbasi.data.common.extension
 
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers

@@ -14,7 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ir.hosseinabbasi.domain.common.ResultState
 import ir.hosseinabbasi.domain.entity.Entity
 import ir.hosseinabbasi.mvvm.R
-import ir.hosseinabbasi.mvvm.common.extension.applyIoScheduler
+import ir.hosseinabbasi.data.common.extension.applyIoScheduler
 import ir.hosseinabbasi.mvvm.common.extension.observe
 import ir.hosseinabbasi.mvvm.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -58,11 +58,11 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener/*, Pag
         //adapter.submitList(albums)
         when (albums) {
             is ResultState.Success -> {
-                //hideLoading()
+                hideLoading()
                 adapter.submitList(albums.data)
             }
             is ResultState.Error -> {
-                //hideLoading()
+                hideLoading()
                 Toast.makeText(activity, albums.throwable.message, Toast.LENGTH_SHORT).show()
                 adapter.submitList(albums.data)
             }
@@ -91,7 +91,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener/*, Pag
 
         //paginate
 
-        //showLoading()
+        showLoading()
     }
 
 /*    private fun observeNetworkList() {

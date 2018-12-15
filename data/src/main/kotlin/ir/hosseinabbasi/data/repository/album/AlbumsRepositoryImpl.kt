@@ -5,6 +5,7 @@ import androidx.paging.RxPagedListBuilder
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.Single
+import ir.hosseinabbasi.data.common.extension.applyIoScheduler
 import ir.hosseinabbasi.data.datasource.album.AlbumsApiDataSource
 import ir.hosseinabbasi.data.datasource.album.AlbumsDatabaseDataSource
 import ir.hosseinabbasi.data.repository.BaseRepositoryImpl
@@ -37,7 +38,16 @@ class AlbumsRepositoryImpl(
                 .setBoundaryCallback(boundaryCallback)
                 .buildFlowable(BackpressureStrategy.BUFFER)
 
-        return data.compose(wrapResultFlowable())
+        return data
+                .applyIoScheduler()
+                .map { d ->
+                    if (d.size > 0)
+                        ResultState.Success(d) as ResultState<PagedList<Entity.Album>>
+                    else
+                        ResultState.Loading(d) as ResultState<PagedList<Entity.Album>>
+                }
+                .onErrorReturn { e -> ResultState.Error(e, null) }
+        //return data.compose(wrapResultFlowable())
     }
 
 

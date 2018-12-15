@@ -19,7 +19,8 @@ class AlbumsDatabaseDataSourceImpl(private val albumDao: AlbumDao,
      * Get all of albums from database implementation
      */
     override fun getAlbums(): DataSource.Factory<Int, Entity.Album> =
-            albumDao.selectAllPaged().map { it.map() }
+            albumDao.selectAllPaged()
+                    .map { it.map() }
 
     /**
      * Persist all of albums in local database implementation
