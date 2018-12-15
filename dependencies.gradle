@@ -116,7 +116,7 @@ ext {
             pagingRuntime         : "androidx.paging:paging-runtime:$pagingVersion",
             navigationFragment    : "android.arch.navigation:navigation-fragment-ktx:$navigationVersion",
             navigationUi          : "android.arch.navigation:navigation-ui-ktx:$navigationVersion",
-            paginate              : "com.github.markomilos:paginate:$paginateVersion"
+            //paginate              : "com.github.markomilos:paginate:$paginateVersion"
     ]
     presentationTestDependencies = [
             kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",

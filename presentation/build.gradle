@@ -87,7 +87,7 @@ dependencies {
     implementation presentationDependencies.picasso
     implementation presentationDependencies.navigationFragment
     implementation presentationDependencies.navigationUi
-    implementation presentationDependencies.paginate
+    //implementation presentationDependencies.paginate
     //kapt "com.android.databinding:compiler:3.1.4"
     //other
     implementation presentationDependencies.multidex

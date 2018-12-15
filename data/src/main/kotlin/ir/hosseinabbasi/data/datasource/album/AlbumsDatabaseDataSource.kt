@@ -1,10 +1,8 @@
 package ir.hosseinabbasi.data.datasource.album
 
-import androidx.paging.PagedList
-import androidx.paging.RxPagedListBuilder
-import io.reactivex.Flowable
+import androidx.paging.DataSource
 import io.reactivex.Single
-import ir.hosseinabbasi.data.datasource.DataSource
+import ir.hosseinabbasi.data.datasource.BaseDataSource
 import ir.hosseinabbasi.domain.entity.Entity
 
 /**
@@ -13,17 +11,17 @@ import ir.hosseinabbasi.domain.entity.Entity
 /**
  * Album database data source
  */
-interface AlbumsDatabaseDataSource : DataSource {
+interface AlbumsDatabaseDataSource : BaseDataSource {
 
     /**
      * Get all of albums from database implementation
      */
-    fun getAlbums(pageSize: Int): Flowable<PagedList<Entity.Album>>
+    fun getAlbums(): DataSource.Factory<Int, Entity.Album>
 
     /**
      * Persist all of albums in local database
      */
-    fun replace(albums: List<Entity.Album>)
+    fun persist(albums: List<Entity.Album>, insertFinished: () -> Unit)
 
     fun deleteAlbum(album: Entity.Album): Single<Int>
 }

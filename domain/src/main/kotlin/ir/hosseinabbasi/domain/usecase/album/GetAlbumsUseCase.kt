@@ -18,9 +18,9 @@ interface GetAlbumsUseCase : BaseUseCase {
     /**
      * Get all of albums use case
      */
-    fun getAlbums(pageSize: Int = 10): Flowable<PagedList<Entity.Album>>
+    fun getAlbums(): Flowable<ResultState<PagedList<Entity.Album>>>
 
     fun deleteAlbum(album: Entity.Album): Single<ResultState<Int>>
 
-    fun loadAlbums(pageNumber: Int): Single<ResultState<List<Entity.Album>>>
+    //fun loadAlbums(pageNumber: Int): Single<ResultState<List<Entity.Album>>>
 }

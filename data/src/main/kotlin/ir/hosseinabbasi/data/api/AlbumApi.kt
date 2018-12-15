@@ -17,8 +17,9 @@ interface AlbumApi {
     /**
      * Get all albums
      */
-    @GET("albums?_limit=10")
-    fun getAlbums(@Query("_start") limit: Int): Single<List<Dto.Album>>
+    @GET("albums")
+    fun getAlbums(@Query("_start") page: Int,
+                  @Query("_limit") pageSize: Int): Single<List<Dto.Album>>
 
     /**
      * Get an album photo by the album id

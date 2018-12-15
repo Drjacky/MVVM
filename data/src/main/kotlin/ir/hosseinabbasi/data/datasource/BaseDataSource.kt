@@ -6,4 +6,4 @@ package ir.hosseinabbasi.data.datasource
 /**
  * Parent for all of data sources
  */
-interface DataSource
+interface BaseDataSource

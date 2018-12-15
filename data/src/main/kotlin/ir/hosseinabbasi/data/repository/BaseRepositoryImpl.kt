@@ -25,7 +25,7 @@ abstract class BaseRepositoryImpl<E : Entity> : BaseRepository {
      * @param D a data type
      * @param databaseFlowable a flowable to load an entity from database.
      * @param netSingle a single to load an entity from server.
-     * @param persist a high order function to replace an entity.
+     * @param persist a high order function to persist an entity.
      */
     protected fun <D> perform(
             databaseFlowable: Flowable<List<D>>,
@@ -66,7 +66,7 @@ abstract class BaseRepositoryImpl<E : Entity> : BaseRepository {
      * @param D a data type
      * @param databaseFlowable a flowable to load entities from database.
      * @param netSingle a single to load entities from server.
-     * @param persist a high order function to replace a list of entities.
+     * @param persist a high order function to persist a list of entities.
      */
     protected fun <D> performList(
             databaseFlowable: Flowable<PagedList<D>>,

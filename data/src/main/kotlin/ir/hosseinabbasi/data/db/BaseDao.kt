@@ -5,7 +5,6 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.IGNORE
 import androidx.room.OnConflictStrategy.REPLACE
-import androidx.room.Transaction
 import androidx.room.Update
 import io.reactivex.Flowable
 import io.reactivex.Single

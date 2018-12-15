@@ -19,6 +19,7 @@ import ir.hosseinabbasi.domain.usecase.album.GetAlbumsUseCaseImpl
 import ir.hosseinabbasi.mvvm.common.transformer.AsyncFTransformer
 import ir.hosseinabbasi.mvvm.common.transformer.AsyncSTransformer
 import ir.hosseinabbasi.mvvm.di.qualifier.ViewModelKey
+import java.util.concurrent.Executors
 
 /**
  * Created by Dr.jacky on 9/7/2018.
@@ -36,7 +37,8 @@ abstract class HomeModule {
         @JvmStatic
         @Provides
         //@PerFragment
-        fun provideDatabaseSource(albumDao: AlbumDao): AlbumsDatabaseDataSource = AlbumsDatabaseDataSourceImpl(albumDao)
+        fun provideDatabaseSource(albumDao: AlbumDao): AlbumsDatabaseDataSource =
+                AlbumsDatabaseDataSourceImpl(albumDao, Executors.newSingleThreadExecutor())
 
         @JvmStatic
         @Provides
