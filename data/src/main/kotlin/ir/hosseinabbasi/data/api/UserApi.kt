@@ -1,9 +1,5 @@
 package ir.hosseinabbasi.data.api
 
-import io.reactivex.Single
-import retrofit2.http.GET
-import retrofit2.http.Path
-
 /**
  * Created by Dr.jacky on 10/9/2018.
  */

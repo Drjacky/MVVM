@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -12,7 +12,6 @@ android {
     defaultConfig {
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
-        applicationId "ir.hosseinabbasi.mvvm"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
@@ -22,18 +21,7 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
-        }
-        debug {
-            minifyEnabled false
-            shrinkResources false
-            debuggable true
-            applicationIdSuffix ".debug"
-            versionNameSuffix "-DEBUG"
-            signingConfig android.signingConfigs.debug
-            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
         }
     }
     compileOptions {
@@ -113,7 +101,7 @@ dependencies {
     testImplementation presentationTestDependencies.powermockModuleJunit4
     testImplementation presentationTestDependencies.powermockApiMockito
 
-    implementation project(':data')
+//    implementation project(':data')
     implementation project(':domain')
 }
 repositories {

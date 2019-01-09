@@ -16,7 +16,7 @@ fun getAlbums(
         itemsPerPage: Int,
         onResult: (result: ResultState<List<Entity.Album>>) -> Unit
 ) {
-    apiSource.getAlbums((page - 1) * itemsPerPage , itemsPerPage)
+    apiSource.getAlbums((page - 1) * itemsPerPage, itemsPerPage)
             .subscribe({ data ->
                 onResult(ResultState.Success(data))
             }, { throwable ->

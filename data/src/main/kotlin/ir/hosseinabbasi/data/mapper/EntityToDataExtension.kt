@@ -1,6 +1,5 @@
 package ir.hosseinabbasi.data.mapper
 
-import ir.hosseinabbasi.data.db.album.AlbumDao
 import ir.hosseinabbasi.data.db.album.AlbumData
 import ir.hosseinabbasi.domain.entity.Entity
 

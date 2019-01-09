@@ -1,7 +1,5 @@
 package ir.hosseinabbasi.domain.usecase
 
-import io.reactivex.Observable
-
 //import android.arch.lifecycle.LiveData
 
 /**

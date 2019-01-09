@@ -1,0 +1,116 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    dataBinding {
+        enabled = true
+    }
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "ir.hosseinabbasi.mvvm"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            debuggable true
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-DEBUG"
+            signingConfig android.signingConfigs.debug
+            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    def appTestDependencies = rootProject.ext.appTestDependencies
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // android support libs
+    implementation appDependencies.material
+    implementation appDependencies.supportv4
+    implementation appDependencies.appCompat
+    implementation appDependencies.recyclerview
+    implementation appDependencies.cardview
+    implementation appDependencies.annotation
+    // database
+    //kapt appDependencies.realmFieldNamesHelper
+    implementation appDependencies.room
+    kapt appDependencies.roomCompiler
+    implementation appDependencies.roomCommon
+    // network
+    implementation appDependencies.retrofit
+    implementation appDependencies.retrofitGsonConverter
+    implementation appDependencies.retrofitRxJava2Adapter
+    implementation appDependencies.okhttpLogging
+    // parser
+    implementation appDependencies.gson
+    // dependency injection
+    implementation appDependencies.javaxInject
+    implementation appDependencies.dagger
+    implementation appDependencies.daggerAndroid
+    implementation appDependencies.daggerAndroidSupport
+    kapt appDependencies.daggerAndroidProcessor
+    annotationProcessor appDependencies.daggerCompiler
+    kapt appDependencies.daggerCompiler
+    // reactive
+    implementation appDependencies.rxJava
+    implementation appDependencies.rxAndroid
+    implementation appDependencies.reactiveStreams
+    // ui
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.picasso
+    implementation appDependencies.navigationFragment
+    implementation appDependencies.navigationUi
+    //implementation appDependencies.paginate
+    //kapt "com.android.databinding:compiler:3.1.4"
+    //other
+    implementation appDependencies.multidex
+    implementation appDependencies.kotlin
+    implementation appDependencies.anko
+    // android architecture component
+    implementation appDependencies.lifecycleExtensions
+    implementation appDependencies.lifecycleCommon
+    implementation appDependencies.pagingRuntime
+    // test
+    testImplementation appTestDependencies.junit
+    androidTestImplementation appTestDependencies.testRunner
+    androidTestImplementation appTestDependencies.testRules
+    androidTestImplementation appTestDependencies.espressoCore
+    androidTestImplementation appTestDependencies.espressoContrib
+    implementation appTestDependencies.espressoIdlingResource
+    androidTestImplementation appTestDependencies.supportAnnotations
+    testImplementation appTestDependencies.robolectric
+    testImplementation appTestDependencies.mockitoCore
+    testAnnotationProcessor appTestDependencies.daggerCompiler
+    androidTestAnnotationProcessor appTestDependencies.daggerCompiler
+    testImplementation appTestDependencies.mockitoKotlin
+    testImplementation appTestDependencies.powermockModuleJunit4
+    testImplementation appTestDependencies.powermockApiMockito
+
+    implementation project(':presentation')
+    implementation project(':data')
+    implementation project(':domain')
+}

@@ -2,7 +2,6 @@ package ir.hosseinabbasi.domain.usecase.album
 
 import androidx.paging.PagedList
 import io.reactivex.Flowable
-import io.reactivex.Single
 import ir.hosseinabbasi.domain.common.ResultState
 import ir.hosseinabbasi.domain.common.transformer.FTransformer
 import ir.hosseinabbasi.domain.common.transformer.STransformer

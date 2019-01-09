@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ir.hosseinabbasi.data" />
+<manifest package="ir.hosseinabbasi.data" />
