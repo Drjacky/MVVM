@@ -1,4 +1,6 @@
 # Android MVVM + Clean Architecture
+![Article](https://raw.githubusercontent.com/Drjacky/MVVM/master/cover.png)
+Link to the [article](https://proandroiddev.com/mvvm-with-clean-architecture-c2c021e05c89)
 
 A simple Android application to show the MVVM design pattern usage with following Clean Architecture approach. 
 
