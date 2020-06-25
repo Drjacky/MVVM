@@ -13,7 +13,7 @@ A simple Android application to show the MVVM design pattern usage with followin
 ## Under Development 🚧
 
 - Some minor improvements.
-- *Please take a look into this [Android Template](https://github.com/Drjacky/MVVMTemplate) instead*
+- **Please take a look into this [Android Template](https://github.com/Drjacky/MVVMTemplate) instead**
 
 ## Contributing 🤝
 
