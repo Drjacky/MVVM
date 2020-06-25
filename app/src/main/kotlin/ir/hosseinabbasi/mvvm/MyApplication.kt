@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
-import ir.hosseinabbasi.mvvm.di.DaggerAppComponent
+import ir.hosseinabbasi.mvvm.di.component.DaggerAppComponent
 
 /**
  * Created by Dr.jacky on 9/7/2018.
