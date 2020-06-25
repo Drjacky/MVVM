@@ -1,9 +1,12 @@
-package ir.hosseinabbasi.mvvm.di
+package ir.hosseinabbasi.mvvm.di.component
 
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import ir.hosseinabbasi.mvvm.MyApplication
+import ir.hosseinabbasi.mvvm.di.AppModule
+import ir.hosseinabbasi.mvvm.di.MainModule
+import ir.hosseinabbasi.mvvm.di.ViewModelModule
 import ir.hosseinabbasi.mvvm.di.home.HomeModule
 import javax.inject.Singleton
 

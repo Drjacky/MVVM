@@ -29,8 +29,10 @@ class AlbumListAdapter : PagedListAdapter<Entity.Album, AlbumListAdapter.DataHol
     }
 
     override fun onBindViewHolder(holder: DataHolder, position: Int) {
-        val album = getItem(position)
-        album?.let { holder.bind(album) }
+        val photoResult = getItem(position)
+        photoResult?.let {
+            holder.bind(photoResult)
+        }
     }
 
     inner class DataHolder(private var itemAlbumBinding: ItemAlbumBinding) : RecyclerView.ViewHolder
