@@ -9,7 +9,6 @@ A simple Android application to show the MVVM design pattern usage with followin
 - Following MVVM Architectural Design Pattern.
 - Using Pagination.
 - Using Navigation Component.
-- Simplest Adapter Ever (based on this [workaround](https://proandroiddev.com/the-best-android-recycler-adapter-youve-ever-seen-probably-177e25279a28)).
 
 ## Under Development 🚧
 
